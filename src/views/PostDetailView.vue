@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, watch } from 'vue'
 import { useRouter, onBeforeRouteLeave  } from 'vue-router'
-import { postsService } from '../services/postsService'
+import { postsService } from '../services/gameService'
 import ConfirmModal from '../components/ConfirmModal.vue'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
-import type Post from '../scripts/post'
+import type Post from '../scripts/character'
 
 const props = defineProps({
   id: String
@@ -140,7 +140,7 @@ onBeforeRouteLeave((to, from, next) => {
       title="Attention"
       body="Vos changements seront perdus. Voulez-vous vraiment quitter cette page ? "
       cancelButton="Non"
-      confirmButton="Oui, quitter sans sauvergarder"
+      confirmButton="Oui, quitter sans sauvegarder"
     />
     <Loading :active="isLoading" />
   </div>

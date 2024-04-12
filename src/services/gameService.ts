@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type Post from '../scripts/post'
+import type Character from '../scripts/character'
 // import { API } from '@/shared/config'
 
 // Note sur le gestion des erreurs:
@@ -8,8 +8,8 @@ import type Post from '../scripts/post'
 
 const API_URL = 'http://127.0.0.1:3000'
 
-async function getPosts () {
-  const { data } = await axios.get(`${API_URL}/posts`)
+async function getTitles () {
+  const { data } = await axios.get(`${API_URL}/titles`)
   return data
 }
 
@@ -18,12 +18,12 @@ async function getPost (id : string) {
   return data
 }
 
-async function updatePost (post : Post) {
-  await axios.put(`${API_URL}/posts/${post.id}`, post)
+async function updatePost (character : Character) {
+  await axios.put(`${API_URL}/posts/${character.id}`, character)
 }
 
-export const postsService = {
-  getPosts,
+export const gameService = {
+  getTitles,
   getPost,
   updatePost
 }

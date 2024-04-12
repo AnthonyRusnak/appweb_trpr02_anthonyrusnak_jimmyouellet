@@ -1,29 +1,26 @@
 import type { RouteRecordRaw } from 'vue-router'
-import PostsView from '../views/PostsView.vue'
+import HomeView from '../views/HomeView.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
       // Route par défaut
-      // La route / est associé au composant PostsView. C'est ce composant qui est chargé quand l'utilisateur navigue vers la page principale de l'application.
+      // La route / est associé au composant HomeView. C'est ce composant qui est chargé quand l'utilisateur navigue vers la page principale de l'application.
       path: '/',
-      name: 'Posts',
-      component: PostsView
+      name: 'Home',
+      component: HomeView
     },
     {
       // Route de page "à propos"
       // Un import dynamique permet de charger un composant uniquement quand il est nécessaire. Si l'utilisateur n'a pas besoin de la page About, alors le composant AboutView ne sera pas chargé. Cela permet d'optimiser le temps de chargement de l'application.
-      path: '/about',
-      name: 'About',
-      component: () => import('../views/AboutView.vue')
+      path: '/scores',
+      name: 'Scores',
+      component: () => import('../views/ScoreboardView.vue')
     },
     {
-      // Route qui affiche le détail d'un post identifié par son id.
-      // Dans la propriété path, on peut utiliser un paramètre dynamique pour capturer une partie d'une chaîne de caractères de l'url et éventuellement utiliser sa valeur dans l'application. Par exemple, dans 'path: '/user/:id', le paramètre dynamique id sera égal à la partie de l'url qui suit /user/. Donc, si l'url est /user/123, alors le paramètre id sera égal à 123.
-      // La propriété props définie à vrai autorise le passage de paramètres au composant associé à la route. On autorise donc ici le passage du paramètre id au composant PostDetailView.
-      path: '/posts/:id',
-      name: 'PostDetail',
-      component: () => import('../views/PostDetailView.vue'),
-      props: true
+      // Route pour aller à la page de création de personnage
+      path: '/character',
+      name: 'CharacterCreation',
+      component: () => import('../views/CharacterCreationView.vue'),
     },
     {
       // Route 404

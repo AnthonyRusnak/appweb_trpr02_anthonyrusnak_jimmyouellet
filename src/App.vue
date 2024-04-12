@@ -16,4 +16,11 @@ import NavigationBar from './components/NavigationBar.vue'
   </main>
 </template>
 
-<style></style>
+<style>
+main,
+html {
+  background-image: url(./assets/images/homebackground.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+</style>

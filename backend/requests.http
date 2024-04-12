@@ -11,7 +11,7 @@ content-type: application/json
 }
 
 ### Voir tous les vaisseaux
-Get http://127.0.0.1:3000/ships
+Get http://127.0.0.1:3000/titles
 
 ### Accès au premier personnage
 Get http://127.0.0.1:3000/characters?_page=1&_limit=1
