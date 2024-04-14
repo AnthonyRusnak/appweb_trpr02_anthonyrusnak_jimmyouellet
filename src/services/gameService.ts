@@ -13,8 +13,8 @@ async function getTitles () {
   return data
 }
 
-async function getPost (id : string) {
-  const { data } = await axios.get(`${API_URL}/posts/${id}`)
+async function getRankings () {
+  const { data } = await axios.get(`${API_URL}/ranking`)
   return data
 }
 
@@ -24,6 +24,6 @@ async function updatePost (character : Character) {
 
 export const gameService = {
   getTitles,
-  getPost,
+  getRankings,
   updatePost
 }

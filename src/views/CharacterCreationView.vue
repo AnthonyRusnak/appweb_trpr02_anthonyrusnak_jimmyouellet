@@ -1,22 +1,21 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, type Ref } from 'vue'
 import Loading from 'vue-loading-overlay'
 import { gameService } from '../services/gameService'
 import 'vue-loading-overlay/dist/css/index.css'
 import { useToast } from 'vue-toast-notification'
 import 'vue-toast-notification/dist/theme-sugar.css'
-import type Character from '../scripts/character'
+import type Title from '../scripts/title'
 
-const posts = ref([] as Character[])
-const isLoading = ref(false)
+const titles: Ref<Title[]> = ref([] as Title[])
+const isLoading: Ref<boolean> = ref(false)
 
-//onMounted est utilisée pour exécuter du code spécifiquement après que le composant a été monté dans le DOM (Document Object Model).
 onMounted(async () => {
   isLoading.value = true
 
   try 
   {
-    posts.value = await gameService.getTitles()
+    titles.value = await gameService.getTitles()
   } 
   catch (error) 
   {
@@ -32,18 +31,41 @@ onMounted(async () => {
 })
 </script>
 
-<!-- Ce composant est associé à la route "/". Il affiche la liste des publications de l'utilisateur. Lorsque l'utilisateur clique sur l'un des liens "Éditer" associés à une publication, il est redirigé vers la route "/posts/:id" (voir fichier src/router/routes.js). -->
 <template>
-  <div>
-    <h1 class="text-center">
-      Necro Gate
+  <div class="container">
+    <div class="mx-auto w-75">
+    <h1 class="text-center outlined display-2 p-2">
+      Qui étiez-vous?
     </h1>
-    <div>
-      description ici :D
-    </div>
+      <form>
+        <div class="p-2 border border-success rounded border-4 bg-dark fs-5" style="--bs-bg-opacity: .5;">
+        <div class="mb-2">
+          <label for="nameField" class="form-label outlined">Votre Nom</label>
+          <input type="text" class="form-control bg-dark border-success border-4 text-white" id="nameField" required>
+        </div>
+        <div class="mb-2">
+          <label for="titleField" class="form-label outlined">Votre Titre</label>
+          <select class="form-select bg-dark text-white border-success border-4" id="titleField" required>
+            <option value="" disabled selected>Choisissez un titre</option>
+            <option v-for="title in titles" :value="title.id">{{ title.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="p-4 text-center">
+          <button type="submit" class="btn btn-dark btn-lg border border-success border-4">Démarrer</button>
+      </div>
+      </form>
     <Loading :active="isLoading" />
+    </div>
   </div>
 </template>
 
-<style>
+<style scoped>
+h1{
+    font-weight: 900;
+}
+.form-label{
+    font-weight: 700;
+    font-size: 2rem;
+}
 </style>

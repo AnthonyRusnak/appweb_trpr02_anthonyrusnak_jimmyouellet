@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import 'vue-loading-overlay/dist/css/index.css'
-import 'vue-toast-notification/dist/theme-sugar.css'
-
 </script>
 
 <template>
-  <div class="container" id="homeDiv">
+  <div class="container">
     <div class="mx-auto text-center w-50">
-      <h1 class="p-2 font-weight-bold">
+      <h1 class="p-2 display-1 outlined">
         Necro Gate
       </h1>
       <div>
-        <p class="p-2 border border-success rounded border-5 bg-dark text-light" style="--bs-bg-opacity: .5;">
+        <p class="p-2 border border-success rounded border-4 bg-dark text-light fs-5" style="--bs-bg-opacity: .5;">
           La Necro Gate est le passage entre le monde des vivants et celui des morts. Il s'agit d'un endroit froid et sinistre 
           où aucun être doté de bon sens ne voudrait se retrouver. Depuis des lustres, en raison de leurs liens avec la magie des morts, 
           des nécromanciens parviennent à entrer dans la Necro Gate dans l'espoir de franchir le passage des âmes et de revenir parmi les 
@@ -22,7 +19,7 @@ import 'vue-toast-notification/dist/theme-sugar.css'
       </div>
 
       <router-link to="/character">
-        <button class="btn btn-dark btn-lg border border-success border-5">
+        <button class="btn btn-dark btn-lg border border-success border-4">
           Entrer
         </button>
       </router-link>
@@ -30,5 +27,8 @@ import 'vue-toast-notification/dist/theme-sugar.css'
   </div>
 </template>
 
-<style>
+<style scoped>
+h1{
+    font-weight: 900;
+}
 </style>
