@@ -34,7 +34,6 @@ onMounted(async () => {
 <template>
   <div class="container">
     <h1 class="text-center outlined display-2 p-2">Tableau des scores</h1>
-    <div class="table-responsive">
       <table class="table table-dark border-success w-75 mx-auto">
         <thead>
           <tr>
@@ -51,7 +50,6 @@ onMounted(async () => {
           </tr>
         </tbody>
       </table>
-    </div>
   </div>
   <Loading :active="isLoading" />
 </template>
