@@ -5,10 +5,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <h1 class="text-success">
+      <h1 class="text-success ps-3">
         Necro Gate | 
       </h1>
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto ps-1">
         <li class="nav-item">
           <RouterLink class="nav-link text-success" id="publications" to="/">Accueil</RouterLink>
         </li>

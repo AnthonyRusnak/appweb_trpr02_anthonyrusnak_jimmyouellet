@@ -1,14 +1,37 @@
 <script setup lang="ts">
 import { onMounted, ref, type Ref } from 'vue'
 import Loading from 'vue-loading-overlay'
+import { useRouter } from 'vue-router'
 import { gameService } from '../services/gameService'
 import 'vue-loading-overlay/dist/css/index.css'
 import { useToast } from 'vue-toast-notification'
 import 'vue-toast-notification/dist/theme-sugar.css'
-import type Title from '../scripts/title'
+import { Title } from '../scripts/interfaces'
+import { isStringEmpty } from '@/scripts/validationUtils'
+import MainText from '../components/MainText.vue'
+import { CHARACTER_CREATION_MAIN_TEXT } from '../scripts/consts'
+
+const router = useRouter()
 
 const titles: Ref<Title[]> = ref([] as Title[])
 const isLoading: Ref<boolean> = ref(false)
+const playerName: Ref<string> = ref('')
+const playerTitleId: Ref<number> = ref(0)
+
+function updateName(): void {
+  playerName.value = (document.getElementById('nameField') as HTMLInputElement).value;
+}
+function updateTitle(): void {
+  playerTitleId.value = Number((document.getElementById('titleField') as HTMLSelectElement).value);
+}
+
+function isFormInvalid(): boolean {
+  return isStringEmpty(playerName.value) || playerTitleId.value === 0
+}
+
+function submitForm(): void {
+  router.push({ name: 'Game', params: { playerName: playerName.value, playerTitleId: playerTitleId.value } })
+}
 
 onMounted(async () => {
   isLoading.value = true
@@ -20,7 +43,7 @@ onMounted(async () => {
   catch (error) 
   {
     useToast().error(
-      `Erreur avec le service: ${(error as Error).message}. Est-ce que vous avez démarré le backend localement ?`,
+      `Erreur avec le service: ${(error as Error).message}. Veuillez réessayer plus tard.`,
       { duration: 6000 }
     )
   } 
@@ -34,25 +57,23 @@ onMounted(async () => {
 <template>
   <div class="container">
     <div class="mx-auto w-75">
-    <h1 class="text-center outlined display-2 p-2">
-      Qui étiez-vous?
-    </h1>
+    <MainText :text="CHARACTER_CREATION_MAIN_TEXT" />
       <form>
         <div class="p-2 border border-success rounded border-4 bg-dark fs-5" style="--bs-bg-opacity: .5;">
         <div class="mb-2">
           <label for="nameField" class="form-label outlined">Votre Nom</label>
-          <input type="text" class="form-control bg-dark border-success border-4 text-white" id="nameField" required>
+          <input type="text" class="form-control bg-dark border-success border-4 text-white" v-on:change="updateName()" id="nameField" required>
         </div>
         <div class="mb-2">
           <label for="titleField" class="form-label outlined">Votre Titre</label>
-          <select class="form-select bg-dark text-white border-success border-4" id="titleField" required>
+          <select class="form-select bg-dark text-white border-success border-4" v-on:change="updateTitle()" id="titleField" required>
             <option value="" disabled selected>Choisissez un titre</option>
             <option v-for="title in titles" :value="title.id">{{ title.name }}</option>
           </select>
         </div>
       </div>
       <div class="p-4 text-center">
-          <button type="submit" class="btn btn-dark btn-lg border border-success border-4">Démarrer</button>
+          <button type="button" :disabled="isFormInvalid()" v-on:click="submitForm()" class="btn btn-dark btn-lg border border-success border-4">Démarrer</button>
       </div>
       </form>
     <Loading :active="isLoading" />
@@ -61,9 +82,6 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-h1{
-    font-weight: 900;
-}
 .form-label{
     font-weight: 700;
     font-size: 2rem;

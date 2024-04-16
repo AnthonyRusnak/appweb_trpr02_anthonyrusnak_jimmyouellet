@@ -5,7 +5,9 @@ import { gameService } from '../services/gameService'
 import 'vue-loading-overlay/dist/css/index.css'
 import { useToast } from 'vue-toast-notification'
 import 'vue-toast-notification/dist/theme-sugar.css'
-import type Ranking from '../scripts/ranking'
+import { Ranking } from '../scripts/interfaces'
+import MainText from '../components/MainText.vue'
+import { SCOREBOARD_MAIN_TEXT } from '../scripts/consts'
 
 const isLoading: Ref<boolean> = ref(false)
 const rankings: Ref<Ranking[]>  = ref([])
@@ -21,7 +23,7 @@ onMounted(async () => {
   catch (error) 
   {
     useToast().error(
-      `Erreur avec le service: ${(error as Error).message}. Est-ce que vous avez démarré le backend localement ?`,
+      `Erreur avec le service: ${(error as Error).message}. Veuillez réessayer plus tard.`,
       { duration: 6000 }
     )
   } 
@@ -33,7 +35,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="container">
-    <h1 class="text-center outlined display-2 p-2">Tableau des scores</h1>
+    <MainText :text="SCOREBOARD_MAIN_TEXT"/>
       <table class="table table-dark border-success w-75 mx-auto">
         <thead>
           <tr>
@@ -54,9 +56,6 @@ onMounted(async () => {
   <Loading :active="isLoading" />
 </template>
 <style scoped>
-h1{
-    font-weight: 900;
-}
 td, th {
   border-width:0.3rem;
 }
