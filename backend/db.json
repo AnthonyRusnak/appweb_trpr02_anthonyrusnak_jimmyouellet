@@ -16,6 +16,38 @@
       "score": 495
     }
   ],
+  "undeads": [
+    {
+      "id": 1,
+      "type": "Zombie",
+      "strength": 10,
+      "experience": 1
+    },
+    {
+      "id": 2,
+      "type": "Squelette",
+      "strength": 20,
+      "experience": 1
+    },
+    {
+      "id": 3,
+      "type": "Goule",
+      "strength": 30,
+      "experience": 2
+    },
+    {
+      "id": 4,
+      "type": "Revenant",
+      "strength": 40,
+      "experience": 2
+    },
+    {
+      "id": 5,
+      "type": "Berger de la mort",
+      "strength": 50,
+      "experience": 3
+    }
+  ],
   "titles": [
     {
       "id": 1,
@@ -167,6 +199,7 @@
       "id": 1,
       "name": "Gregorio",
       "title": "Paladin de l'ordre sacré",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -175,6 +208,7 @@
       "id": 2,
       "name": "Antonio Di Mariolo",
       "title": "Prêtre de la lumière",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -183,6 +217,7 @@
       "id": 3,
       "name": "Jimmias de Boudreau",
       "title": "Sage prêtre vétéran",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -191,6 +226,7 @@
       "id": 4,
       "name": "Death Bringer",
       "title": "Nécromancienne blanche",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -198,7 +234,8 @@
     {
       "id": 5,
       "name": "Merlin",
-      "title": "Grand maître des arts magiques",
+      "title": "Grand maître des arts mystiques",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -207,6 +244,7 @@
       "id": 6,
       "name": "Alfonso",
       "title": "Chevalier de la table ronde",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -215,6 +253,7 @@
       "id": 7,
       "name": "Gayle",
       "title": "Mage blanc protecteur",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -223,6 +262,7 @@
       "id": 8,
       "name": "Hector",
       "title": "Homme d'armes de la garde sacrée",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -231,6 +271,7 @@
       "id": 9,
       "name": "Jonhas",
       "title": "Paladin apprenti",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -239,6 +280,7 @@
       "id": 10,
       "name": "Victor le juste",
       "title": "Seigneur des paladins de l'ordre sacré",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -247,6 +289,7 @@
       "id": 11,
       "name": "Baelyn",
       "title": "Héro légendaire",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -255,6 +298,7 @@
       "id": 12,
       "name": "Fabiano le sans peur",
       "title": "Général des armées de l'ordre sacré",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -263,6 +307,7 @@
       "id": 13,
       "name": "Père Gabriele",
       "title": "Clerc de la lumière divine",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -271,6 +316,7 @@
       "id": 14,
       "name": "Louis le colosse",
       "title": "Tueur des morts-vivants",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -279,6 +325,7 @@
       "id": 15,
       "name": "Sans nom",
       "title": "Force instoppable divine",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -287,6 +334,7 @@
       "id": 16,
       "name": "Archange Michael",
       "title": "Général des armées de dieu",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -295,6 +343,7 @@
       "id": 17,
       "name": "Lorenzo",
       "title": "Fantassin de l'ordre",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -303,6 +352,7 @@
       "id": 18,
       "name": "Isabella",
       "title": "Fantassin de l'ordre",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -311,6 +361,7 @@
       "id": 19,
       "name": "Giovanni",
       "title": "Fantassin de l'ordre",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -319,6 +370,7 @@
       "id": 20,
       "name": "Matteo",
       "title": "Paladin sacré",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -327,6 +379,7 @@
       "id": 21,
       "name": "Joshua",
       "title": "Paladin sacré",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -335,6 +388,7 @@
       "id": 22,
       "name": "Pierre",
       "title": "Paladin sacré",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -343,6 +397,7 @@
       "id": 23,
       "name": "Philippe",
       "title": "Prêtre des forces divines",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -351,6 +406,7 @@
       "id": 24,
       "name": "William",
       "title": "Prêtre des forces divines",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -359,6 +415,7 @@
       "id": 25,
       "name": "Lucia",
       "title": "Guèrriere juste",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -367,6 +424,7 @@
       "id": 26,
       "name": "Lydia",
       "title": "Assassin des morts",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -375,6 +433,7 @@
       "id": 27,
       "name": "Violette",
       "title": "Paladin en Chef",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -383,6 +442,7 @@
       "id": 28,
       "name": "Vitruvius le sage",
       "title": "Guardien du passage des âmes",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -391,6 +451,7 @@
       "id": 29,
       "name": "Nick Cage",
       "title": "Casseur de morts-vivants",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100
@@ -399,6 +460,7 @@
       "id": 30,
       "name": "Père Hamish",
       "title": "Purificateur des âmes damnées",
+      "strength": 100,
       "lifeForce": 100,
       "experience": 1,
       "vitality": 100

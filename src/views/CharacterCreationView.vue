@@ -6,10 +6,10 @@ import { gameService } from '../services/gameService'
 import 'vue-loading-overlay/dist/css/index.css'
 import { useToast } from 'vue-toast-notification'
 import 'vue-toast-notification/dist/theme-sugar.css'
-import { Title } from '../scripts/interfaces'
+import type Title from '../scripts/interfaces'
 import { isStringEmpty } from '@/scripts/validationUtils'
 import MainText from '../components/MainText.vue'
-import { CHARACTER_CREATION_MAIN_TEXT } from '../scripts/consts'
+import { CHARACTER_CREATION_MAIN_TEXT, PLAYER_NAME_MAX_LENGTH } from '../scripts/consts'
 
 const router = useRouter()
 
@@ -26,7 +26,7 @@ function updateTitle(): void {
 }
 
 function isFormInvalid(): boolean {
-  return isStringEmpty(playerName.value) || playerTitleId.value === 0
+  return isStringEmpty(playerName.value) || playerTitleId.value === 0 || playerName.value.length > PLAYER_NAME_MAX_LENGTH
 }
 
 function submitForm(): void {
@@ -59,7 +59,7 @@ onMounted(async () => {
     <div class="mx-auto w-75">
     <MainText :text="CHARACTER_CREATION_MAIN_TEXT" />
       <form>
-        <div class="p-2 border border-success rounded border-4 bg-dark fs-5" style="--bs-bg-opacity: .5;">
+        <div class="p-2 border border-success rounded border-4 bg-dark fs-5" style="--bs-bg-opacity: .75;">
         <div class="mb-2">
           <label for="nameField" class="form-label outlined">Votre Nom</label>
           <input type="text" class="form-control bg-dark border-success border-4 text-white" v-on:change="updateName()" id="nameField" required>

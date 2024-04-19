@@ -8,8 +8,8 @@ import { HOME_MAIN_TEXT } from '../scripts/consts';
     <MainText :text="HOME_MAIN_TEXT" />
     <div class="mx-auto text-center w-50">
       <div>
-        <p class="p-2 border border-success rounded border-4 bg-dark text-light fs-5" style="--bs-bg-opacity: .5;">
-          La Necro Gate est le passage entre le monde des vivants et celui des morts. Il s'agit d'un endroit froid et sinistre 
+        <p class="p-2 border border-success rounded border-4 bg-dark text-light fs-5" style="--bs-bg-opacity: .75;">
+          La Necro Gate est la porte menant au passage entre le monde des vivants et celui des morts. Il s'agit d'un endroit froid et sinistre 
           où aucun être doté de bon sens ne voudrait se retrouver. Depuis des lustres, en raison de leurs liens avec la magie des morts, 
           des nécromanciens déchus parviennent à entrer dans la Necro Gate dans l'espoir de franchir le passage des âmes et de revenir parmi les 
           vivants. Pour stopper ce flux d'êtres revenant d'entre les morts, de nombreux paladins, prêtres et mages blancs gardent le passage 

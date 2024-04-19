@@ -5,7 +5,7 @@ import { gameService } from '../services/gameService'
 import 'vue-loading-overlay/dist/css/index.css'
 import { useToast } from 'vue-toast-notification'
 import 'vue-toast-notification/dist/theme-sugar.css'
-import { Ranking } from '../scripts/interfaces'
+import type Ranking from '../scripts/interfaces'
 import MainText from '../components/MainText.vue'
 import { SCOREBOARD_MAIN_TEXT } from '../scripts/consts'
 

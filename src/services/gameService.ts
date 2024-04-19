@@ -1,5 +1,8 @@
 import axios from 'axios'
-import type Character from '../scripts/character'
+import type Character from '../scripts/interfaces'
+import type Undead from '../scripts/interfaces'
+import type Ranking from '../scripts/interfaces'
+import type Title from '../scripts/interfaces'
 // import { API } from '@/shared/config'
 
 // Note sur le gestion des erreurs:
@@ -8,22 +11,40 @@ import type Character from '../scripts/character'
 
 const API_URL = 'http://127.0.0.1:3000'
 
-async function getTitles () {
+async function getTitles(): Promise<Title[]> {
   const { data } = await axios.get(`${API_URL}/titles`)
   return data
 }
 
-async function getRankings () {
+async function getTitleById(id : number): Promise<Title> {
+  const { data } = await axios.get(`${API_URL}/titles/${id}`)
+  return data
+}
+
+async function getRankings(): Promise<Ranking[]> {
   const { data } = await axios.get(`${API_URL}/ranking`)
   return data
 }
 
-async function updatePost (character : Character) {
+async function getCharacters(): Promise<Character[]> {
+  const { data } = await axios.get(`${API_URL}/characters`)
+  return data
+}
+
+async function getUndeads(): Promise<Undead[]> {
+  const { data } = await axios.get(`${API_URL}/undeads`)
+  return data
+}
+
+async function updateRanking(character : Character) {
   await axios.put(`${API_URL}/posts/${character.id}`, character)
 }
 
 export const gameService = {
   getTitles,
+  getTitleById,
   getRankings,
-  updatePost
+  getCharacters,
+  getUndeads,
+  updateRanking
 }
