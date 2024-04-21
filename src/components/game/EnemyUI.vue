@@ -9,17 +9,16 @@ const props = defineProps({
     enemy: Object as () => Character,
     enemyCurrentHealth: Number,
 })
-
 </script>
 
 <template>
-    <div class="bg-dark border border-success rounded border-4" style="--bs-bg-opacity: .90;">
-        <div class="container">
-            <CharacterName :characterName="'Nicolas Cage'" :characterTitle="'Casseur de mort'" :color="ENEMY_COLOR" />
-            <div class="row align-items-end pt-4 pb-2">
-                <CharacterHealthBar :characterHealthPercentage="100" :characterCurrentHealth="100" :maxHealth="100" :color="ENEMY_COLOR" />
-                <CharacterStats :lifeForce="100" :experience="2" :strength="100" :color="ENEMY_COLOR" />
-            </div>
+    <div class="bg-dark border border-success rounded border-4 characterUI container-fluid" style="--bs-bg-opacity: .90;">
+        <div class="text-end">
+            <CharacterName :characterName="enemy?.name" :characterTitle="enemy?.title" :color="ENEMY_COLOR" />
+        </div>
+        <div class="row align-items-end pt-4 pb-2">
+            <CharacterHealthBar :characterMaxHealth="enemy?.vitality" :characterCurrentHealth="enemyCurrentHealth" :color="ENEMY_COLOR" />
+            <CharacterStats :lifeForce="enemy?.lifeForce" :experience="enemy?.experience" :strength="enemy?.strength" :color="ENEMY_COLOR" />
         </div>
     </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { GAME_EXPERIENCE_TEXT } from '../../scripts/consts';
 
 const props = defineProps({
@@ -9,6 +9,7 @@ const props = defineProps({
     minionCount: Number,
     color: String
 })
+
 </script>
 
 <template>
@@ -16,7 +17,7 @@ const props = defineProps({
         <div class="exp outlined-dark text-success">{{ GAME_EXPERIENCE_TEXT[((experience??1) - 1)] }}</div>
         <div class="label outlined-dark text-success" >Force: <span>{{ strength }}</span></div>
         <div class="label outlined-dark text-success">Force vitale: <span>{{ lifeForce }}</span></div>
-        <div class="label outlined-dark text-success" v-if="props.minionCount !== undefined">Serviteurs: <span>{{ minionCount }}</span></div>
+        <div id="minions" v-bind:class="{hidden: minionCount === undefined}" class="label outlined-dark text-success">Serviteurs: <span>{{ minionCount }}</span></div>
     </div>
 </template>
 
@@ -31,4 +32,8 @@ span {
 .label {
     font-size: 1.4rem;
 }
+.hidden {
+    visibility: hidden;
+}
+
 </style>

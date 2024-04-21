@@ -20,3 +20,8 @@ export const DEFAULT_PLAYER_STRENGTH = 100;
 export const DEFAULT_PLAYER_EXPERIENCE = 4;
 
 export const ATTACK_DAMAGE_RANGE = 50;
+
+export const PLAYER_HEAL_COST_PER_AMOUNT = 1;
+export const PLAYER_HEAL_AMOUNT = 5;
+
+export const PLAYER_SUMMON_COST = 20;

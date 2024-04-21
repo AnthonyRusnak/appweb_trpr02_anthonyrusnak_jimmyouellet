@@ -2,14 +2,14 @@
 import { computed, defineProps, type Ref } from 'vue';
 
 const props = defineProps({
-    characterHealthPercentage: Number,
     characterCurrentHealth: Number,
+    characterMaxHealth: Number,
     color: String
 })
 
-const characterHealthPercentageFirstDeg: Ref<number> = computed(() => Math.min((props.characterHealthPercentage??0) * 3.6, 180))
-const characterHealthPercentageLastDeg: Ref<number> = computed(() => Math.max((props.characterHealthPercentage??0) * 3.6 - 180, 0))
-
+const characterHealthPercentage: Ref<number> = computed(() => ((props.characterCurrentHealth??0) / props.characterMaxHealth!) * 100)
+const characterHealthPercentageFirstDeg: Ref<number> = computed(() => Math.min((characterHealthPercentage.value??0) * 3.6, 180))
+const characterHealthPercentageLastDeg: Ref<number> = computed(() => Math.max((characterHealthPercentage.value??0) * 3.6 - 180, 0))
 </script>
 
 <template>
@@ -32,6 +32,7 @@ const characterHealthPercentageLastDeg: Ref<number> = computed(() => Math.max((p
   line-height: 150px;
   background: none;
   margin-right: 0.5rem;
+  margin-left: 0.5rem;
   position: relative;
 }
 .progress:after {

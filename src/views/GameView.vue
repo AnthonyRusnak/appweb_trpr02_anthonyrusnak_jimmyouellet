@@ -14,7 +14,7 @@ import ActionPanel from '../components/game/ActionPanel.vue'
 import EnemyUI from '../components/game/EnemyUI.vue'
 import PlayerUI from '../components/game/PlayerUI.vue'
 import { ActionType } from '../scripts/enums'
-import { ATTACK_DAMAGE_RANGE, DEFAULT_PLAYER_EXPERIENCE, DEFAULT_PLAYER_HEALTH, DEFAULT_PLAYER_STRENGTH } from '@/scripts/consts'
+import { ATTACK_DAMAGE_RANGE, DEFAULT_PLAYER_EXPERIENCE, DEFAULT_PLAYER_HEALTH, DEFAULT_PLAYER_STRENGTH, PLAYER_HEAL_AMOUNT, PLAYER_HEAL_COST_PER_AMOUNT, PLAYER_SUMMON_COST } from '@/scripts/consts'
 
 // Database elements
 const undeads: Ref<Undead[]> = ref([])
@@ -42,7 +42,14 @@ const props = defineProps({
   playerTitleId: String,
 })
 
-function playerAct(action: ActionType) {
+function act(action: ActionType): void {
+  playerAct(action)
+  enemyAct()
+  undeadsAct()
+}
+
+function playerAct(action: ActionType): void {
+  playerIsBlocking = false
   switch (action) {
     case ActionType.ATTACK:
       attack()
@@ -62,21 +69,6 @@ function playerAct(action: ActionType) {
     default:
       break
   }
-  enemyAct()
-}
-
-function attack(): void {
-  const damage = handleAttack(player.value.experience, player.value.strength)
-  if (damage === 0) {
-    gameLog.value.push(`Votre attaque a raté}.`)
-  }else{
-    currentEnemyHealth.value -= damage
-    if (currentEnemyHealth.value <= 0) {
-      currentEnemyHealth.value = 0
-    } else {
-    gameLog.value.push(`Vous attaquez pour ${damage} points de dégâts.`)
-    }
-  }
 }
 
 function handleAttack(experience: number, strength: number): number {
@@ -89,35 +81,51 @@ function handleAttack(experience: number, strength: number): number {
     return 0
   }
 }
-
-function defend() {
+function attack(): void {
+  const damage = handleAttack(player.value.experience, player.value.strength)
+  if (damage === 0) {
+    gameLog.value.push(`Votre attaque a raté.`)
+  }else{
+    currentEnemyHealth.value -= damage
+    if (currentEnemyHealth.value <= 0) {
+      currentEnemyHealth.value = 0
+    } else {
+    gameLog.value.push(`Vous lancez des flammes nécrotiques pour ${damage} points de dégâts.`)
+    }
+  }
+}
+function defend(): void {
   playerIsBlocking = true
-  gameLog.value.push(`${player.value.name} se prépare à bloquer les attaques de ${currentEnemy.value.name}.`)
+  gameLog.value.push(`Vous formez un voile nécrotique autour de vous.`)
 }
-function heal() {
-  if (player.value.lifeForce > 0) {
-    const heal = player.value.strength
-    playerHealth.value += heal
-    player.value.lifeForce -= heal
-    gameLog.value.push(`${player.value.name} se soigne de ${heal} points de vie.`)
-  } else {
-    gameLog.value.push(`${player.value.name} n'a pas assez de force vitale pour se soigner.`)
+function heal(): void{
+  const preHealHealth: number = playerHealth.value;
+  let healCost: number = 0;
+
+  while (player.value.lifeForce >= PLAYER_HEAL_COST_PER_AMOUNT && playerHealth.value < player.value.vitality) {
+    player.value.lifeForce -= PLAYER_HEAL_COST_PER_AMOUNT;
+    playerHealth.value += PLAYER_HEAL_AMOUNT;
+    healCost += PLAYER_HEAL_COST_PER_AMOUNT;
   }
-}
-function summon() {
-  if (player.value.lifeForce > 0){
-    const minion = undeads.value[Math.floor(Math.random() * undeads.value.length)]
-    player.value.lifeForce -= minion.strength
-    playerMinions.value.push(minion)
-    gameLog.value.push(`${player.value.name} invoque un ${minion.type}.`)
-  } else {
-    gameLog.value.push(`${player.value.name} n'a pas assez de force vitale pour invoquer un serviteur.`)
+  if (playerHealth.value >= player.value.vitality) {
+    playerHealth.value = player.value.vitality;
   }
+
+  let healAmount: number = playerHealth.value - preHealHealth;
+  gameLog.value.push(`Vous abosrbez ${healCost} points de force vitale pour vous soigner de ${healAmount} points de vie.`);
 }
-function flee() {
+
+function summon(): void {
+  player.value.lifeForce -= PLAYER_SUMMON_COST;
+  let newMinion: Undead = undeads.value[Math.floor(Math.random() * undeads.value.length)]
+  playerMinions.value.push(newMinion)
+  gameLog.value.push(`Vous réanimez un(e) ${newMinion.type} pour servir votre cause.`)
+}
+function flee(): void{
   gameLog.value.push(`${player.value.name} fuit le combat.`)
 }
-function enemyAct() {
+
+function enemyAct(): void {
   if (currentEnemyHealth.value <= 0) {
     gameLog.value.push(`${currentEnemy.value.name} est vaincu!`)
     currentEnemy.value = enemies.value[Math.floor(Math.random() * enemies.value.length)]
@@ -126,14 +134,20 @@ function enemyAct() {
     let damage = handleAttack(currentEnemy.value.experience, currentEnemy.value.strength)
     if (playerIsBlocking) {
       damage = Math.floor(damage / 2)
-      playerIsBlocking = false
     }
     playerHealth.value -= damage
     gameLog.value.push(`${currentEnemy.value.name} attaque ${player.value.name} pour ${damage} points de dégâts.`)
   }
 }
+function undeadsAct(): void {
+  playerMinions.value.forEach(minion => {
+    let damage = handleAttack(minion.experience, minion.strength)
+    currentEnemyHealth.value -= damage
+    gameLog.value.push(`${minion.type} attaque pour ${damage} points de dégâts.`)
+  })
+}
 
-function getNewEnemy() {
+function getNewEnemy(): void {
   currentEnemy.value = enemies.value[Math.floor(Math.random() * enemies.value.length)]
   currentEnemyHealth.value = currentEnemy.value.vitality
 }
@@ -183,10 +197,10 @@ onMounted(async () => {
           <GameLogger :gameLog="gameLog" :currentFight="currentFight" />
         </div>
         <div class="col-4">
-          <EnemyUI :ennemy="currentEnemy" :ennemyCurrentHealth="currentEnemyHealth"/>
+          <EnemyUI :enemy="currentEnemy" :enemyCurrentHealth="currentEnemyHealth"/>
         </div>
       </div>
-      <ActionPanel @playerAct="playerAct" />
+      <ActionPanel :playerHealth="playerHealth" :playerLifeForce="player.lifeForce" @playerAct="act" />
     </div>
   </template>
   <Loading :active="isLoading" />

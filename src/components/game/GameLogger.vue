@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="bg-dark border border-success rounded border-4" style="--bs-bg-opacity: .75;">
+  <div class="bg-dark border border-success rounded border-4" style="--bs-bg-opacity: .90;">
     Combat {{ currentFight }}
     <div class="log" >
       <ul v-for="log in gameLog">
