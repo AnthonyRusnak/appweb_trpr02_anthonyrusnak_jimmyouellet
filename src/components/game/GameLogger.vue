@@ -10,8 +10,11 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="bg-dark border border-success rounded border-4" style="--bs-bg-opacity: .90;">
-    Combat {{ currentFight }}
+  <div class="bg-dark border border-success rounded border-4 text-center mb-4" style="--bs-bg-opacity: .90;">
+    <div class="h2">
+      <span class="text-success outlined-dark">Combat : </span> {{ currentFight }}
+      <span class="text-success outlined-dark">/</span> 5
+    </div>
     <div class="log" >
       <ul v-for="log in gameLog">
         <li>{{ log }}</li>

@@ -7,7 +7,7 @@ import 'vue-loading-overlay/dist/css/index.css'
 import { useToast } from 'vue-toast-notification'
 import 'vue-toast-notification/dist/theme-sugar.css'
 import type Title from '../scripts/interfaces'
-import { isStringEmpty } from '@/scripts/validationUtils'
+import { isStringEmpty } from '@/scripts/utils/validationUtils'
 import MainText from '../components/MainText.vue'
 import { CHARACTER_CREATION_MAIN_TEXT, PLAYER_NAME_MAX_LENGTH } from '../scripts/consts'
 

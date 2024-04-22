@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { GAME_EXPERIENCE_TEXT } from '../../scripts/consts';
+import { GAME_EXPERIENCE_TEXT } from '../../../scripts/consts';
 
 const props = defineProps({
     lifeForce: Number,

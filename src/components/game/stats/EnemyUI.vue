@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type Character from '../../scripts/interfaces'
-import CharacterName from './CharacterName.vue';
+import type Character from '../../../scripts/interfaces'
+import CharacterName from '../stats/CharacterName.vue';
 import CharacterStats from './CharacterStats.vue';
 import CharacterHealthBar from './CharacterHealthBar.vue';
-import { ENEMY_COLOR } from '../../scripts/consts';
+import { ENEMY_COLOR } from '../../../scripts/consts';
 
 const props = defineProps({
     enemy: Object as () => Character,

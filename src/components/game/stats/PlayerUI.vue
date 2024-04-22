@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type Character from '../../scripts/interfaces';
-import CharacterName from './CharacterName.vue';
+import type Character from '../../../scripts/interfaces';
+import CharacterName from '../stats/CharacterName.vue';
 import CharacterStats from './CharacterStats.vue';
 import CharacterHealthBar from './CharacterHealthBar.vue';
-import { PLAYER_COLOR } from '../../scripts/consts';
+import { PLAYER_COLOR } from '../../../scripts/consts';
 
 const props = defineProps({
     player: Object as () => Character,

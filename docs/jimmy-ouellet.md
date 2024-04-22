@@ -24,3 +24,21 @@ La table bootstrap parvient à garder la bonne taille peu importe la taille des 
 *Pas si problématique, mais il est préférable d'éviter tout de même.
 
 Il y avait également la `<div class="table-responsive">` inutile laissée derrière qu'il vaut mieux retirer pour faciliter la lecture du code.
+
+## Récit 6
+
+### Composantes
+
+La `PlayerUI` est divisée en plusieurs composantes pour éviter la répétition du code et l'alléger. Il serait par contre préférable de créer un dossier pour les composantes reliées aux statistiques, car cela prend beaucoup de place dans le dossier de composantes et réduit ainsi sa lisibilité.
+
+![](assets/20240420_204407_2024-04-20_20_42_51-jimmy-ouellet.png)
+
+## Récit 7
+
+### Principe du Don't Repeat Yourself
+
+Le code de `EnemyUI` est très similaire au code de `PlayerUI`. Le code est bien optimisé afin d'éviter trop de répétition, mais il y en a quand même beaucoup. Par exemple, la classe de la div container est la même : `class="bg-dark border border-success rounded border-4 characterUI container-fluid"`. Il aurait pu être possible de créer une seule composante `CharacterUI` qui serait réutilisée pour les deux affichages de stats. Cependant, cela aurait été beaucoup de props à passer en paramètre et donc assez complexe à mettre en place.
+
+### Cacher les serviteurs
+
+Dans les stats des ennemis, il ne fallait pas afficher leur nombre de serviteurs puisqu'ils n'en ont aucun. Pour ce faire, la div contenant les serviteurs est cachée, mais conserve sa présence, ce qui conserve un affichage similaire aux stats du joueur. Cela est très bien fait à l'exception que dans le v-bind qui ajoute la classe `hidden`, il vérifie que le minionCount est undefined. Il vaudrait peut-être mieux envoyer une valeur fictive comme (-1) plutôt que de ne pas passer de valeur.

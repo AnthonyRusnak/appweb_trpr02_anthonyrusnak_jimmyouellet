@@ -20,7 +20,7 @@ function act(action : ActionType): void{
 <template>
   <div class="container">
     <div class="row align-items-start gx-4">
-        <div class="bg-dark border border-success rounded border-4" style="--bs-bg-opacity: .75;">
+        <div class="bg-dark border border-success rounded border-4" style="--bs-bg-opacity: .90;">
           <div class="text-center fs-5">Actions</div>
           <div class="d-flex justify-content-around">
             <button @click="act(ActionType.ATTACK)" class="btn btn-dark border border-success border-4">Attaquer</button>
