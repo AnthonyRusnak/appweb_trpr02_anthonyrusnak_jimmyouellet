@@ -5,6 +5,8 @@ export const PLAYER_NAME_MAX_LENGTH = 19;
 
 export const PLAYER_COLOR = "#3dc414";
 export const ENEMY_COLOR = "#cf0000";
+export const UNDEAD_COLOR = "#fff761";
+export const GAME_COLOR = "#ffffff";
 
 
 export const GAME_EXPERIENCE_TEXT = [
@@ -19,9 +21,13 @@ export const DEFAULT_PLAYER_HEALTH = 500;
 export const DEFAULT_PLAYER_STRENGTH = 100;
 export const DEFAULT_PLAYER_EXPERIENCE = 4;
 
-export const ATTACK_DAMAGE_RANGE = 50;
-
 export const PLAYER_HEAL_COST_PER_AMOUNT = 1;
 export const PLAYER_HEAL_AMOUNT = 5;
 
-export const PLAYER_SUMMON_COST = 20;
+export const PLAYER_BLOCK_DAMAGE_DIVIDER = 2;
+
+export const PLAYER_SUMMON_COST = 30;
+
+export const ATTACK_DAMAGE_RANGE = 50;
+
+export const ENEMY_MINION_KILL_CHANCE = 0.25;

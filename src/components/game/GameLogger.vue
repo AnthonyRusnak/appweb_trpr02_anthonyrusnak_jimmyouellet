@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { getParsedCommandLineOfConfigFile } from 'typescript';
-import { onMounted, ref, defineProps, type Ref } from 'vue'
 
 const props = defineProps({
-    gameLog: Array<String>,
+    gameLog: Array<string[]>,
     currentFight: Number,
 })
 
@@ -11,13 +9,13 @@ const props = defineProps({
 
 <template>
   <div class="bg-dark border border-success rounded border-4 text-center mb-4" style="--bs-bg-opacity: .90;">
-    <div class="h2">
+    <div class="border-bottom border-success border-4 fs-2">
       <span class="text-success outlined-dark">Combat : </span> {{ currentFight }}
       <span class="text-success outlined-dark">/</span> 5
     </div>
-    <div class="log" >
-      <ul v-for="log in gameLog">
-        <li>{{ log }}</li>
+    <div class="log">
+      <ul class="list-group" v-for="log in gameLog">
+        <li class="list-group-item bg-dark border-success active" :style="{ color: log[1] }" >{{ log[0] }}</li>
       </ul>
     </div>
   </div>
