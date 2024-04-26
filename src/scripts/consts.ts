@@ -14,17 +14,24 @@ export const POP_UP_FLEE: PopUpText = {
 };
 
 export const POP_UP_LOSS: PopUpText = {
-    title: "Vous avez perdu",
-    description: "Vous avez été vaincu par les forces du mal. Voulez-vous recommencer?",
+    title: "Vous êtes mort... encore",
+    description: "De la poussière vous êtes venu, à la poussière vous retournerez. Les forces divines vous ont ramené dans l'au-delà, mais votre âme n'est pas perdue pour autant. Retentez votre chance?",
     buttonFalseText: "Retour à l'accueil",
     buttonTrueText: "Recommencer"
 };
 
 export const POP_UP_FIGHT_OVER: PopUpText = {
-    title: "La bataille est terminée",
-    description: "La bataille est terminée. Voulez-vous continuer?",
-    buttonFalseText: "Retour à l'accueil",
-    buttonTrueText: "Continuer"
+    title: "Tout est calme...",
+    description: "Vôtre ennemi git sans vie à vos pieds. Vous avez absorbé le reste de ses forces vitales. Vôtre route est encore longue. Voulez-vous vous soigner avant de continuer?",
+    buttonFalseText: "Continuer",
+    buttonTrueText: "Se soigner"
+};
+
+export const POP_UP_PAGE_EXIT: PopUpText = {
+    title: "Quitter la page",
+    description: "Voulez-vous vraiment quitter la page?",
+    buttonFalseText: "Non",
+    buttonTrueText: "Oui"
 };
 
 //COLORS
@@ -52,7 +59,7 @@ export const PLAYER_BLOCK_DAMAGE_DIVIDER = 2;
 export const ENEMY_MINION_KILL_CHANCE = 0.2;
 
 //GAME GENERAL
-export const GAME_DELAY = 1000;
+export const GAME_DELAY = 500;
 export const GAME_FIGHT_AMOUNT = 5;
 
 export const ATTACK_DAMAGE_RANGE = 50;

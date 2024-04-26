@@ -12,7 +12,7 @@ import ActionPanel from '../components/game/ActionPanel.vue'
 import EnemyUI from '../components/game/stats/EnemyUI.vue'
 import PlayerUI from '../components/game/stats/PlayerUI.vue'
 import { ActionType, EventType } from '../scripts/enums'
-import { DEFAULT_PLAYER_EXPERIENCE, DEFAULT_PLAYER_HEALTH, DEFAULT_PLAYER_LIFE_FORCE, DEFAULT_PLAYER_STRENGTH, ENEMY_COLOR, ENEMY_MINION_KILL_CHANCE, GAME_COLOR, GAME_DELAY, PLAYER_BLOCK_DAMAGE_DIVIDER, PLAYER_COLOR, PLAYER_HEAL_AMOUNT, PLAYER_HEAL_COST_PER_AMOUNT, PLAYER_SUMMON_COST, UNDEAD_COLOR, POP_UP_FLEE, POP_UP_LOSS } from '@/scripts/consts'
+import { DEFAULT_PLAYER_EXPERIENCE, DEFAULT_PLAYER_HEALTH, DEFAULT_PLAYER_LIFE_FORCE, DEFAULT_PLAYER_STRENGTH, ENEMY_COLOR, ENEMY_MINION_KILL_CHANCE, GAME_COLOR, GAME_DELAY, PLAYER_BLOCK_DAMAGE_DIVIDER, PLAYER_COLOR, PLAYER_HEAL_AMOUNT, PLAYER_HEAL_COST_PER_AMOUNT, PLAYER_SUMMON_COST, UNDEAD_COLOR, POP_UP_FLEE, POP_UP_LOSS, POP_UP_FIGHT_OVER } from '@/scripts/consts'
 import { handleAttack, handleHealthAjustment, isCharacterDead, delay } from '../scripts/utils/gameUtils'
 import PopUp from '../components/game/PopUp.vue'
 
@@ -23,7 +23,7 @@ const enemies: Ref<Character[]> = ref([])
 // Player elements
 const player: Ref<Character> = ref({} as Character)
 
-const playerHealth: Ref<number> = ref(500)
+const playerHealth: Ref<number> = ref(DEFAULT_PLAYER_HEALTH)
 let playerIsBlocking: boolean = false
 let playerIsFleeing: boolean = false
 const playerMinions: Ref<Undead[]> = ref([])
@@ -67,10 +67,8 @@ async function act(action: ActionType): Promise<void> {
     }
 
     if (currentEnemyIsDead) {
-      gameLog.value.push([`${currentEnemy.value.name} est mort!`, GAME_COLOR])
-      player.value.lifeForce += currentEnemy.value.lifeForce
-      getNextFight()
-    }
+      handleFightOver()
+    } 
     gameLog.value.push([`-----------------------------------------------------`, GAME_COLOR])
   }
   isTurnPlaying.value = false
@@ -203,6 +201,12 @@ function undeadAttack(minion: Undead): void {
 }
 
 //GAME SECTION
+function handlePlayerFightWin(healing: boolean): void {
+  if (healing) heal()
+  player.value.lifeForce += currentEnemy.value.lifeForce
+  getNextFight()
+}
+
 function getNextFight(): void {
   prepNextFight()
   getNewEnemy()
@@ -229,14 +233,23 @@ function handlePlayerDeath(): void {
   if (isCharacterDead(playerHealth.value)) {
     popUpEventType.value = EventType.LOSS as string
     currentPopUpText.value = POP_UP_LOSS
+    popUpButtonAction.value = endGame
     isPopUpShowing.value = true
+  }
+}
+
+function endGame(restart: boolean): void {
+  if (restart) {
+    location.reload()
+  } else {
+    window.location.href = '/'
   }
 }
 
 function handleFightOver(): void {
   popUpEventType.value = EventType.FIGHT_OVER as string
-  currentPopUpText.value = { title: 'Vous avez vaincu tous les ennemis!', description: 'Voulez-vous recommencer?', buttonFalseText: 'Non', buttonTrueText: 'Oui' }
-  popUpButtonAction.value = getNextFight
+  currentPopUpText.value =  POP_UP_FIGHT_OVER
+  popUpButtonAction.value = handlePlayerFightWin
   isPopUpShowing.value = true
 }
 
