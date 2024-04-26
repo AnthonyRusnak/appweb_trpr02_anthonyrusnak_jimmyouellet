@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import type Character from '../../../scripts/interfaces';
+import {type Character} from '../../../scripts/interfaces';
 import CharacterName from '../stats/CharacterName.vue';
 import CharacterStats from './CharacterStats.vue';
 import CharacterHealthBar from './CharacterHealthBar.vue';

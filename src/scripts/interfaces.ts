@@ -1,4 +1,4 @@
-export default interface Character {
+export interface Character {
     readonly id: number;
     readonly name: string;
     readonly title: string;
@@ -8,20 +8,27 @@ export default interface Character {
     readonly vitality: number;
 }
 
-export default interface Undead {
+export interface Undead {
     readonly id: number;
     readonly type: string;
     readonly strength: number;
     readonly experience: number;
 }
 
-export default interface Ranking { 
+export interface Ranking { 
     readonly id: number;
     readonly name: string;
     readonly score: number;
 }
 
-export default interface Title {
+export interface Title {
     readonly id: number;
     readonly name: string;
-}  
+}
+
+export interface PopUpText {
+    title: string;
+    description: string;
+    buttonFalseText: string;
+    buttonTrueText: string;
+}

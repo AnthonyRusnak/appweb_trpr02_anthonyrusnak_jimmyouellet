@@ -5,3 +5,11 @@ export enum ActionType {
     HEAL = 'heal',
     FLEE = 'flee'
 }
+
+export enum EventType {
+    FLEE = 'flee',
+    QUIT = 'quit',
+    LOSS = 'loss',
+    FIGHT_OVER = 'fightOver',
+    WIN = 'win',
+}

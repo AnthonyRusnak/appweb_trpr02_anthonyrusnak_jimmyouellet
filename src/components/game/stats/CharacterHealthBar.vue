@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineProps, type Ref } from 'vue';
+import { computed, defineProps, watch, type Ref } from 'vue';
 
 const props = defineProps({
     characterCurrentHealth: Number,
@@ -10,6 +10,7 @@ const props = defineProps({
 const characterHealthPercentage: Ref<number> = computed(() => ((props.characterCurrentHealth??0) / props.characterMaxHealth!) * 100)
 const characterHealthPercentageFirstDeg: Ref<number> = computed(() => Math.min((characterHealthPercentage.value??0) * 3.6, 180))
 const characterHealthPercentageLastDeg: Ref<number> = computed(() => Math.max((characterHealthPercentage.value??0) * 3.6 - 180, 0))
+
 </script>
 
 <template>

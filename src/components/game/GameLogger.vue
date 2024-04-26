@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { GAME_FIGHT_AMOUNT } from '../../scripts/consts';
 
 const props = defineProps({
     gameLog: Array<string[]>,
@@ -11,7 +12,7 @@ const props = defineProps({
   <div class="bg-dark border border-success rounded border-4 text-center mb-4" style="--bs-bg-opacity: .90;">
     <div class="border-bottom border-success border-4 fs-2">
       <span class="text-success outlined-dark">Combat : </span> {{ currentFight }}
-      <span class="text-success outlined-dark">/</span> 5
+      <span class="text-success outlined-dark">/</span> {{ GAME_FIGHT_AMOUNT }}
     </div>
     <div class="log">
       <ul class="list-group" v-for="log in gameLog">

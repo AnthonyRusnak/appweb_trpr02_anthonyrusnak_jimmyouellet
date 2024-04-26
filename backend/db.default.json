@@ -20,32 +20,38 @@
     {
       "id": 1,
       "type": "Zombie",
-      "strength": 10,
-      "experience": 1
+      "strength": 75,
+      "experience": 2
     },
     {
       "id": 2,
-      "type": "Squelette",
-      "strength": 20,
-      "experience": 1
+      "type": "Goule",
+      "strength": 90,
+      "experience": 3
     },
     {
       "id": 3,
-      "type": "Goule",
-      "strength": 30,
-      "experience": 2
+      "type": "Berger de la mort",
+      "strength": 120,
+      "experience": 4
     },
     {
       "id": 4,
-      "type": "Revenant",
-      "strength": 40,
-      "experience": 2
+      "type": "Squelette",
+      "strength": 50,
+      "experience": 5
     },
     {
       "id": 5,
-      "type": "Berger de la mort",
-      "strength": 50,
-      "experience": 3
+      "type": "Revenant",
+      "strength": 75,
+      "experience": 5
+    },
+    {
+      "id": 6,
+      "type": "Squelette tireur d'élite",
+      "strength": 90,
+      "experience": 5
     }
   ],
   "titles": [
@@ -199,152 +205,152 @@
       "id": 1,
       "name": "Gregorio",
       "title": "Paladin de l'ordre sacré",
-      "strength": 100,
+      "strength": 50,
       "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "experience": 2,
+      "vitality": 200
     },
     {
       "id": 2,
       "name": "Antonio Di Mariolo",
       "title": "Prêtre de la lumière",
       "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
+      "lifeForce": 150,
+      "experience": 3,
       "vitality": 100
     },
     {
       "id": 3,
       "name": "Jimmias de Boudreau",
       "title": "Sage prêtre vétéran",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 120,
+      "lifeForce": 150,
+      "experience": 3,
+      "vitality": 80
     },
     {
       "id": 4,
       "name": "Death Bringer",
       "title": "Nécromancienne blanche",
       "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "lifeForce": 750,
+      "experience": 5,
+      "vitality": 1000
     },
     {
       "id": 5,
       "name": "Merlin",
       "title": "Grand maître des arts mystiques",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 300,
+      "lifeForce": 800,
+      "experience": 5,
+      "vitality": 300
     },
     {
       "id": 6,
       "name": "Alfonso",
       "title": "Chevalier de la table ronde",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 70,
+      "lifeForce": 150,
+      "experience": 2,
+      "vitality": 350
     },
     {
       "id": 7,
       "name": "Gayle",
       "title": "Mage blanc protecteur",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 120,
+      "lifeForce": 300,
+      "experience": 4,
+      "vitality": 500
     },
     {
       "id": 8,
       "name": "Hector",
       "title": "Homme d'armes de la garde sacrée",
-      "strength": 100,
-      "lifeForce": 100,
+      "strength": 50,
+      "lifeForce": 75,
       "experience": 1,
-      "vitality": 100
+      "vitality": 200
     },
     {
       "id": 9,
       "name": "Jonhas",
       "title": "Paladin apprenti",
-      "strength": 100,
+      "strength": 50,
       "lifeForce": 100,
       "experience": 1,
-      "vitality": 100
+      "vitality": 250
     },
     {
       "id": 10,
       "name": "Victor le juste",
       "title": "Seigneur des paladins de l'ordre",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 120,
+      "lifeForce": 400,
+      "experience": 3,
+      "vitality": 500
     },
     {
       "id": 11,
       "name": "Baelyn",
       "title": "Héro légendaire",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 200,
+      "lifeForce": 700,
+      "experience": 5,
+      "vitality": 250
     },
     {
       "id": 12,
       "name": "Fabiano le sans peur",
       "title": "Général des armées de l'ordre sacré",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 150,
+      "lifeForce": 550,
+      "experience": 4,
+      "vitality": 600
     },
     {
       "id": 13,
       "name": "Père Gabriele",
       "title": "Clerc de la lumière divine",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
+      "strength": 120,
+      "lifeForce": 150,
+      "experience": 2,
       "vitality": 100
     },
     {
       "id": 14,
       "name": "Louis le colosse",
       "title": "Tueur des morts-vivants",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 200,
+      "lifeForce": 300,
+      "experience": 3,
+      "vitality": 300
     },
     {
       "id": 15,
       "name": "Sans nom",
       "title": "Force instoppable divine",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 50,
+      "lifeForce": 700,
+      "experience": 4,
+      "vitality": 2000
     },
     {
       "id": 16,
       "name": "Archange Michael",
       "title": "Général des armées de dieu",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 200,
+      "lifeForce": 750,
+      "experience": 4,
+      "vitality": 1000
     },
     {
       "id": 17,
       "name": "Lorenzo",
       "title": "Fantassin de l'ordre",
-      "strength": 100,
-      "lifeForce": 100,
+      "strength": 50,
+      "lifeForce": 50,
       "experience": 1,
       "vitality": 100
     },
@@ -352,118 +358,118 @@
       "id": 18,
       "name": "Isabella",
       "title": "Fantassin de l'ordre",
-      "strength": 100,
+      "strength": 80,
       "lifeForce": 100,
       "experience": 1,
-      "vitality": 100
+      "vitality": 120
     },
     {
       "id": 19,
       "name": "Giovanni",
       "title": "Fantassin de l'ordre",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 80,
+      "lifeForce": 150,
+      "experience": 2,
+      "vitality": 150
     },
     {
       "id": 20,
       "name": "Matteo",
       "title": "Paladin sacré",
-      "strength": 100,
+      "strength": 75,
       "lifeForce": 100,
       "experience": 1,
-      "vitality": 100
+      "vitality": 150
     },
     {
       "id": 21,
       "name": "Joshua",
       "title": "Paladin sacré",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 75,
+      "lifeForce": 175,
+      "experience": 2,
+      "vitality": 200
     },
     {
       "id": 22,
       "name": "Pierre",
       "title": "Paladin sacré",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 80,
+      "lifeForce": 200,
+      "experience": 3,
+      "vitality": 200
     },
     {
       "id": 23,
       "name": "Philippe",
       "title": "Prêtre des forces divines",
-      "strength": 100,
+      "strength": 150,
       "lifeForce": 100,
       "experience": 1,
-      "vitality": 100
+      "vitality": 50
     },
     {
       "id": 24,
       "name": "William",
       "title": "Prêtre des forces divines",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 300,
+      "lifeForce": 200,
+      "experience": 3,
+      "vitality": 150
     },
     {
       "id": 25,
       "name": "Lucia",
       "title": "Guèrriere juste",
       "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "lifeForce": 300,
+      "experience": 3,
+      "vitality": 300
     },
     {
       "id": 26,
       "name": "Lydia",
       "title": "Assassin des morts",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 250,
+      "lifeForce": 300,
+      "experience": 3,
+      "vitality": 200
     },
     {
       "id": 27,
       "name": "Violette",
       "title": "Paladin en Chef",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 120,
+      "lifeForce": 350,
+      "experience": 3,
+      "vitality": 600
     },
     {
       "id": 28,
       "name": "Vitruvius le sage",
       "title": "Guardien du passage des âmes",
       "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "lifeForce": 500,
+      "experience": 4,
+      "vitality": 500
     },
     {
       "id": 29,
       "name": "Nick Cage",
       "title": "Casseur de morts-vivants",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 200,
+      "lifeForce": 1500,
+      "experience": 5,
+      "vitality": 2000
     },
     {
       "id": 30,
       "name": "Père Hamish",
       "title": "Purificateur des âmes damnées",
-      "strength": 100,
-      "lifeForce": 100,
-      "experience": 1,
-      "vitality": 100
+      "strength": 350,
+      "lifeForce": 250,
+      "experience": 2,
+      "vitality": 125
     }
   ]
 }
