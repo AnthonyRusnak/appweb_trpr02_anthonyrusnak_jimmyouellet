@@ -27,6 +27,13 @@ export const POP_UP_FIGHT_OVER: PopUpText = {
     buttonTrueText: "Se soigner"
 };
 
+export const POP_UP_WIN: PopUpText = {
+    title: "Vous avez vaincu!",
+    description: "Le combat est terminé. Vous avez prouvé votre valeur. Voulez-vous continuer votre aventure?",
+    buttonFalseText: "Retour à l'accueil",
+    buttonTrueText: "Enregistrer le score"
+};
+
 export const POP_UP_PAGE_EXIT: PopUpText = {
     title: "Quitter la page",
     description: "Voulez-vous vraiment quitter la page?",
@@ -60,7 +67,7 @@ export const ENEMY_MINION_KILL_CHANCE = 0.2;
 
 //GAME GENERAL
 export const GAME_DELAY = 500;
-export const GAME_FIGHT_AMOUNT = 5;
+export const GAME_FIGHT_AMOUNT = 1;
 
 export const ATTACK_DAMAGE_RANGE = 50;
 export const DEATH_TRESHOLD = 0;

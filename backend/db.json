@@ -14,6 +14,11 @@
       "id": 3,
       "name": "I ran out of ideas",
       "score": 495
+    },
+    {
+      "id": 4,
+      "name": "Bozantho",
+      "score": 200
     }
   ],
   "undeads": [
@@ -157,7 +162,7 @@
     },
     {
       "id": 26,
-      "name": "Revenant sans coeur" 
+      "name": "Revenant sans coeur"
     },
     {
       "id": 27,
@@ -173,7 +178,7 @@
     },
     {
       "id": 30,
-      "name": "Mort-vivant supérieur" 
+      "name": "Mort-vivant supérieur"
     },
     {
       "id": 31,

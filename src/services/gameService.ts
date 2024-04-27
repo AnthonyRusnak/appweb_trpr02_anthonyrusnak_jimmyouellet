@@ -1,13 +1,8 @@
 import axios from 'axios'
-import type Character from '../scripts/interfaces'
-import type Undead from '../scripts/interfaces'
-import type Ranking from '../scripts/interfaces'
-import type Title from '../scripts/interfaces'
-// import { API } from '@/shared/config'
-
-// Note sur le gestion des erreurs:
-// - Dans ce projet, la gestion des erreurs (try/catch) est gérée par le code qui utilise ce service.
-// - Dans un contexte d'entreprise, il serait utile de loguer les erreurs qui surviennent dans ce service et ensuite de les relancer en précisant le contexte de l'erreur.
+import { type Character } from '../scripts/interfaces'
+import { type Undead } from '../scripts/interfaces'
+import { type Ranking } from '../scripts/interfaces'
+import { type Title } from '../scripts/interfaces'
 
 const API_URL = 'http://127.0.0.1:3000'
 
@@ -36,8 +31,13 @@ async function getUndeads(): Promise<Undead[]> {
   return data
 }
 
-async function updateRanking(character : Character) {
-  await axios.put(`${API_URL}/posts/${character.id}`, character)
+async function getNextRankingId(): Promise<number> {
+  const { data } = await axios.get(`${API_URL}/ranking`)
+  return data.length + 1
+}
+
+async function addRanking(ranking : Ranking) {
+  await axios.post(`${API_URL}/ranking`, ranking)
 }
 
 export const gameService = {
@@ -46,5 +46,6 @@ export const gameService = {
   getRankings,
   getCharacters,
   getUndeads,
-  updateRanking
+  getNextRankingId,
+  addRanking
 }

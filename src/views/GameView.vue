@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, defineProps, type Ref, computed } from 'vue'
+import { onMounted, ref, defineProps, type Ref, computed, h } from 'vue'
 import { gameService } from '../services/gameService'
 import { useToast } from 'vue-toast-notification'
 import { type Title, type Undead, type Character, type PopUpText } from '../scripts/interfaces'
@@ -12,9 +12,13 @@ import ActionPanel from '../components/game/ActionPanel.vue'
 import EnemyUI from '../components/game/stats/EnemyUI.vue'
 import PlayerUI from '../components/game/stats/PlayerUI.vue'
 import { ActionType, EventType } from '../scripts/enums'
-import { DEFAULT_PLAYER_EXPERIENCE, DEFAULT_PLAYER_HEALTH, DEFAULT_PLAYER_LIFE_FORCE, DEFAULT_PLAYER_STRENGTH, ENEMY_COLOR, ENEMY_MINION_KILL_CHANCE, GAME_COLOR, GAME_DELAY, PLAYER_BLOCK_DAMAGE_DIVIDER, PLAYER_COLOR, PLAYER_HEAL_AMOUNT, PLAYER_HEAL_COST_PER_AMOUNT, PLAYER_SUMMON_COST, UNDEAD_COLOR, POP_UP_FLEE, POP_UP_LOSS, POP_UP_FIGHT_OVER } from '@/scripts/consts'
+import { DEFAULT_PLAYER_EXPERIENCE, DEFAULT_PLAYER_HEALTH, DEFAULT_PLAYER_LIFE_FORCE, DEFAULT_PLAYER_STRENGTH, ENEMY_COLOR, ENEMY_MINION_KILL_CHANCE, GAME_COLOR, GAME_DELAY, PLAYER_BLOCK_DAMAGE_DIVIDER, PLAYER_COLOR, PLAYER_HEAL_AMOUNT, PLAYER_HEAL_COST_PER_AMOUNT, PLAYER_SUMMON_COST, UNDEAD_COLOR, POP_UP_FLEE, POP_UP_LOSS, POP_UP_FIGHT_OVER, POP_UP_PAGE_EXIT, GAME_FIGHT_AMOUNT, POP_UP_WIN } from '@/scripts/consts'
 import { handleAttack, handleHealthAjustment, isCharacterDead, delay } from '../scripts/utils/gameUtils'
 import PopUp from '../components/game/PopUp.vue'
+import { onBeforeRouteLeave } from 'vue-router'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // Database elements
 const undeads: Ref<Undead[]> = ref([])
@@ -137,10 +141,7 @@ function summon(): void {
 }
 function flee(): void{
   playerIsFleeing = true
-  popUpEventType.value = EventType.FLEE as string
-  currentPopUpText.value = POP_UP_FLEE
-  popUpButtonAction.value = escape
-  isPopUpShowing.value = true
+  setPopUp(EventType.FLEE, POP_UP_FLEE, escape)
 }
 
 function escape(healing: boolean): void{
@@ -230,11 +231,8 @@ function handleEnemyDeath(): void {
 }
 
 function handlePlayerDeath(): void {
-  if (isCharacterDead(playerHealth.value)) {
-    popUpEventType.value = EventType.LOSS as string
-    currentPopUpText.value = POP_UP_LOSS
-    popUpButtonAction.value = endGame
-    isPopUpShowing.value = true
+  if (isCharacterDead(playerHealth.value)) {    
+    setPopUp(EventType.LOSS, POP_UP_LOSS, endGame)
   }
 }
 
@@ -242,14 +240,34 @@ function endGame(restart: boolean): void {
   if (restart) {
     location.reload()
   } else {
-    window.location.href = '/'
+    router.push({ name: 'Home' })
+  }
+}
+
+async function winGame(saveScore: boolean): Promise<void> {
+  if (saveScore) {
+    isLoading.value = true
+    let rankId: number = await gameService.getNextRankingId()
+    await gameService.addRanking({ id: rankId , name: player.value.name, score: player.value.lifeForce })
+    isLoading.value = false
+    router.push({ name: 'Scores' })
+  } else {
+    router.push({ name: 'Home' })
   }
 }
 
 function handleFightOver(): void {
-  popUpEventType.value = EventType.FIGHT_OVER as string
-  currentPopUpText.value =  POP_UP_FIGHT_OVER
-  popUpButtonAction.value = handlePlayerFightWin
+  if (currentFight.value >= GAME_FIGHT_AMOUNT){
+    setPopUp(EventType.WIN, POP_UP_WIN, winGame)
+  } else{
+    setPopUp(EventType.FIGHT_OVER, POP_UP_FIGHT_OVER, handlePlayerFightWin)
+  }
+}
+
+function setPopUp(eventType: EventType, popUpText: PopUpText, buttonAction: Function): void {
+  popUpEventType.value = eventType as string
+  currentPopUpText.value = popUpText
+  popUpButtonAction.value = buttonAction
   isPopUpShowing.value = true
 }
 
@@ -293,8 +311,8 @@ onMounted(async () => {
 </script>
 
 <template>
+  <PopUp :isShowing="isPopUpShowing" :eventType="popUpEventType" :popUpText="currentPopUpText" @[popUpEventType]="popUpAct" />
   <template v-if="!isLoading">
-    <PopUp :isShowing="isPopUpShowing" :eventType="popUpEventType" :popUpText="currentPopUpText" @[popUpEventType]="popUpAct" />
     <div class="container overflow-hidden text-light">
       <div class="row align-items-start gx-4">
         <div class="col-4">
