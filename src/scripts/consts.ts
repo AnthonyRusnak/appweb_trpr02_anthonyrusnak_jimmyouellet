@@ -28,15 +28,15 @@ export const POP_UP_FIGHT_OVER: PopUpText = {
 };
 
 export const POP_UP_WIN: PopUpText = {
-    title: "Vous avez vaincu!",
-    description: "Le combat est terminé. Vous avez prouvé votre valeur. Voulez-vous continuer votre aventure?",
+    title: "Vous avez survécu!",
+    description: "Rien n'a pus vous arrêter. Vous voilà de retour à la vie, plus fort que jamais. Alors que la Necro Gate se voit de plus en plus petite derrière, vous savez que votre reigne ne fait que commencer.",
     buttonFalseText: "Retour à l'accueil",
     buttonTrueText: "Enregistrer le score"
 };
 
 export const POP_UP_PAGE_EXIT: PopUpText = {
     title: "Quitter la page",
-    description: "Voulez-vous vraiment quitter la page?",
+    description: "Votre progression sera perdue si vous quittez la page. Êtes-vous sûr de vouloir continuer?",
     buttonFalseText: "Non",
     buttonTrueText: "Oui"
 };
@@ -53,7 +53,7 @@ export const PLAYER_NAME_MAX_LENGTH = 19;
 export const DEFAULT_PLAYER_HEALTH = 500;
 export const DEFAULT_PLAYER_STRENGTH = 100;
 export const DEFAULT_PLAYER_EXPERIENCE = 4;
-export const DEFAULT_PLAYER_LIFE_FORCE = 200;
+export const DEFAULT_PLAYER_LIFE_FORCE = 0;
 
 export const PLAYER_SUMMON_COST = 30;
 
@@ -67,7 +67,7 @@ export const ENEMY_MINION_KILL_CHANCE = 0.2;
 
 //GAME GENERAL
 export const GAME_DELAY = 500;
-export const GAME_FIGHT_AMOUNT = 1;
+export const GAME_FIGHT_AMOUNT = 5;
 
 export const ATTACK_DAMAGE_RANGE = 50;
 export const DEATH_TRESHOLD = 0;

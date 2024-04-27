@@ -19,6 +19,7 @@ import { onBeforeRouteLeave } from 'vue-router'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const allowLeave: Ref<boolean> = ref(false)
 
 // Database elements
 const undeads: Ref<Undead[]> = ref([])
@@ -170,7 +171,7 @@ function enemyAttack(): void {
     playerHealth.value -= damage
     handleHealthAjustment(playerHealth)
     handlePlayerDeath()
-    gameLog.value.push([`${currentEnemy.value.name} attaque ${player.value.name} pour ${damage} points de dégâts.`, ENEMY_COLOR])
+    gameLog.value.push([`${currentEnemy.value.name} vous attaque pour ${damage} points de dégâts.`, ENEMY_COLOR])
   }
 }
 
@@ -204,7 +205,6 @@ function undeadAttack(minion: Undead): void {
 //GAME SECTION
 function handlePlayerFightWin(healing: boolean): void {
   if (healing) heal()
-  player.value.lifeForce += currentEnemy.value.lifeForce
   getNextFight()
 }
 
@@ -257,6 +257,7 @@ async function winGame(saveScore: boolean): Promise<void> {
 }
 
 function handleFightOver(): void {
+  player.value.lifeForce += currentEnemy.value.lifeForce
   if (currentFight.value >= GAME_FIGHT_AMOUNT){
     setPopUp(EventType.WIN, POP_UP_WIN, winGame)
   } else{
@@ -275,6 +276,18 @@ function popUpAct(condition: boolean): void {
   isPopUpShowing.value = false
   popUpButtonAction.value(condition)
 }
+
+router.beforeEach((to) => {
+  if (!isPopUpShowing.value){
+    setPopUp(EventType.QUIT, POP_UP_PAGE_EXIT, (condition: boolean) => {
+      if (condition) {
+        allowLeave.value = true
+        router.push(to)
+      }
+    })
+  }
+  return allowLeave.value
+})
 
 onMounted(async () => {
   isLoading.value = true

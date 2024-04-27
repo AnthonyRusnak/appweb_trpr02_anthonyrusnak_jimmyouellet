@@ -2,23 +2,28 @@
   "ranking": [
     {
       "id": 1,
-      "name": "Funnus",
-      "score": 500
+      "name": "Lord Quaron",
+      "score": 1408
     },
     {
       "id": 2,
       "name": "Jym'Gil the Hutt",
-      "score": 550
+      "score": 1300
     },
     {
       "id": 3,
-      "name": "I ran out of ideas",
-      "score": 495
+      "name": "Jiddoomancer",
+      "score": 1850
     },
     {
       "id": 4,
-      "name": "Bozantho",
-      "score": 200
+      "name": "Carrion",
+      "score": 1100
+    },
+    {
+      "id": 5,
+      "name": "Necro",
+      "score": 1807
     }
   ],
   "undeads": [
