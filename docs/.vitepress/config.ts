@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Necro Gate",
   description: "TP2 d'application web",
+  base: "/appweb_trpr02_anthonyrusnak_jimmyouellet/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
