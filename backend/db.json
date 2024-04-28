@@ -167,7 +167,7 @@
     },
     {
       "id": 26,
-      "name": "Revenant sans coeur"
+      "name": "Revenant sans coeur" 
     },
     {
       "id": 27,
@@ -183,7 +183,7 @@
     },
     {
       "id": 30,
-      "name": "Mort-vivant supérieur"
+      "name": "Mort-vivant supérieur" 
     },
     {
       "id": 31,
@@ -475,11 +475,38 @@
     {
       "id": 30,
       "name": "Père Hamish",
-      "title": "Purificateur des âmes damnées",
+      "title": "Sanctificateur des âmes damnées",
       "strength": 350,
       "lifeForce": 250,
       "experience": 2,
       "vitality": 125
+    },
+    {
+      "id": 31,
+      "name": "Père O'Malley",
+      "title": "Purificateur des âmes damnées",
+      "strength": 500,
+      "lifeForce": 200,
+      "experience": 4,
+      "vitality": 400
+    },
+    {
+      "id": 32,
+      "name": "Duke Nukem",
+      "title": "Le numéro 1",
+      "strength": 400,
+      "lifeForce": 2000,
+      "experience": 4,
+      "vitality": 2000
+    },
+    {
+      "id": 33,
+      "name": "Silver",
+      "title": "Gardien de l'ordre sacré",
+      "strength": 100,
+      "lifeForce": 100,
+      "experience": 5,
+      "vitality": 50
     }
   ]
 }

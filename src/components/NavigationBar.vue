@@ -10,10 +10,10 @@
       </h1>
       <ul class="navbar-nav mr-auto ps-1">
         <li class="nav-item">
-          <RouterLink class="nav-link text-success" id="publications" to="/">Accueil</RouterLink>
+          <RouterLink class="nav-link text-success" id="home" to="/">Accueil</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link text-success" id="apropos" :to="{ name: 'Scores' }">Tableau des scores</RouterLink>
+          <RouterLink class="nav-link text-success" id="score" :to="{ name: 'Scores' }">Tableau des scores</RouterLink>
         </li>
       </ul>
     </div>

@@ -11,7 +11,7 @@ const props = defineProps({
 <template>
   <div class="bg-dark border border-success rounded border-4 text-center mb-4" style="--bs-bg-opacity: .90;">
     <div class="border-bottom border-success border-4 fs-2">
-      <span class="text-success outlined-dark">Combat : </span> {{ currentFight }}
+      <span class="text-success outlined-dark">Combat :</span> {{ currentFight }}
       <span class="text-success outlined-dark">/</span> {{ GAME_FIGHT_AMOUNT }}
     </div>
     <div class="log">

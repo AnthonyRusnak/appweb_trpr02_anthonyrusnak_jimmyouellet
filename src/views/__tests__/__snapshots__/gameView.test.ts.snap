@@ -1,0 +1,76 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GameView.vue > Should renders properly 1`] = `
+"<div class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="popUpModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content border border-success border-5 bg-dark" style="--bs-bg-opacity: .90;">
+      <div class="modal-header border-bottom border-success">
+        <h5 class="modal-title text-success display-6 outlined-dark" id="popUpModalTitle"></h5>
+      </div>
+      <div class="modal-body text-light"></div>
+      <div class="modal-footer d-flex justify-content-between border-top border-success"><button type="button" class="btn btn-dark btn-lg border border-success border-4"></button><button type="button" class="btn btn-dark btn-lg border border-success border-4"></button></div>
+    </div>
+  </div>
+</div>
+<div class="container overflow-hidden text-light">
+  <div class="row align-items-start gx-4">
+    <div class="col-4">
+      <div class="bg-dark border border-success rounded border-4 characterUI container-fluid" style="--bs-bg-opacity: .90;">
+        <div data-v-77942875="" class="row align-items-start pt-2">
+          <div data-v-77942875="" class="col">
+            <div data-v-77942875="" class="text-success outlined-dark display-6"></div>
+            <div data-v-77942875="" class="text-title"></div>
+          </div>
+        </div>
+        <div class="row align-items-end pt-4 pb-2">
+          <div data-v-df467c64="" class="col m-3">
+            <div data-v-df467c64="" class="exp outlined-dark text-success">Apprenti</div>
+            <div data-v-df467c64="" class="label outlined-dark text-success">Force: <span data-v-df467c64=""></span></div>
+            <div data-v-df467c64="" class="label outlined-dark text-success">Force vitale: <span data-v-df467c64=""></span></div>
+            <div data-v-df467c64="" id="minions" class="label outlined-dark text-success">Serviteurs: <span data-v-df467c64="">0</span></div>
+          </div>
+          <div data-v-ccd5ed8b="" class="progress blue"><span data-v-ccd5ed8b="" class="progress-left"><span data-v-ccd5ed8b="" class="progress-bar"></span></span><span data-v-ccd5ed8b="" class="progress-right"><span data-v-ccd5ed8b="" class="progress-bar"></span></span>
+            <div data-v-ccd5ed8b="" class="progress-value">500 PV</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div data-v-8f1829de="" class="bg-dark border border-success rounded border-4 text-center mb-4" style="--bs-bg-opacity: .90;">
+        <div data-v-8f1829de="" class="border-bottom border-success border-4 fs-2"><span data-v-8f1829de="" class="text-success outlined-dark">Combat :</span> 1 <span data-v-8f1829de="" class="text-success outlined-dark">/</span> 5</div>
+        <div data-v-8f1829de="" class="log"></div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="bg-dark border border-success rounded border-4 characterUI container-fluid" style="--bs-bg-opacity: .90;">
+        <div class="text-end">
+          <div data-v-77942875="" class="row align-items-start pt-2">
+            <div data-v-77942875="" class="col">
+              <div data-v-77942875="" class="text-success outlined-dark display-6"></div>
+              <div data-v-77942875="" class="text-title"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-end pt-4 pb-2">
+          <div data-v-ccd5ed8b="" class="progress blue"><span data-v-ccd5ed8b="" class="progress-left"><span data-v-ccd5ed8b="" class="progress-bar"></span></span><span data-v-ccd5ed8b="" class="progress-right"><span data-v-ccd5ed8b="" class="progress-bar"></span></span>
+            <div data-v-ccd5ed8b="" class="progress-value">0 PV</div>
+          </div>
+          <div data-v-df467c64="" class="col m-3">
+            <div data-v-df467c64="" class="exp outlined-dark text-success">Apprenti</div>
+            <div data-v-df467c64="" class="label outlined-dark text-success">Force: <span data-v-df467c64=""></span></div>
+            <div data-v-df467c64="" class="label outlined-dark text-success">Force vitale: <span data-v-df467c64=""></span></div>
+            <div data-v-df467c64="" id="minions" class="hidden label outlined-dark text-success">Serviteurs: <span data-v-df467c64=""></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div data-v-8f93bd20="" class="container">
+    <div data-v-8f93bd20="" class="row align-items-start gx-4">
+      <div data-v-8f93bd20="" class="bg-dark border border-success rounded border-4" style="--bs-bg-opacity: .75;">
+        <div data-v-8f93bd20="" class="d-flex justify-content-around"><button data-v-8f93bd20="" class="btn btn-dark border border-success border-4 fs-1"><img data-v-8f93bd20="" class="icon" src="/src/assets/images/necro_sword.png" alt="Attaque"></button><button data-v-8f93bd20="" class="btn btn-dark border border-success border-4 fs-1"><img data-v-8f93bd20="" class="icon" src="/src/assets/images/necro_shield.png" alt="Défense"></button><button data-v-8f93bd20="" disabled="" class="btn btn-dark border border-success border-4 fs-1"><img data-v-8f93bd20="" class="icon" src="/src/assets/images/necro_hand.png" alt="Invocation"></button><button data-v-8f93bd20="" disabled="" class="btn btn-dark border border-success border-4 fs-1"><img data-v-8f93bd20="" class="icon" src="/src/assets/images/necro_heal.png" alt="Soin"></button><button data-v-8f93bd20="" class="btn btn-dark border border-success border-4 fs-1"><img data-v-8f93bd20="" class="icon" src="/src/assets/images/necro_flee.png" alt="Fuir"></button></div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;

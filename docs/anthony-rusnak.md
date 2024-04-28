@@ -48,3 +48,5 @@ J'aime beaucoup comment la fonction `playerAct()` gère les actions du joueur. L
 La présence d'un `gameLog` est non seulement un élément fort pratique pour que le joueur arrive mieux à suivre le déroulement du jeu, elle aide aussi à déboguer plus facilement plutôt que de faire des `console.log()`.
 
 La logique pour calculer les dégâts du joueur, des morts-vivants et des ennemis est la même partout, donc la présence de la fonction `handleAttack()` fait beaucoup de sens. Cependant, je pense que le nom de la fonction `handleAttack()` pourrait être un peu plus précis. Par exemple, elle pourrait s'appeler `handleDamage()` à la place, puisqu'elle ne fait que calculer les dégâts.
+
+

@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { Modal } from 'bootstrap';
-import { onMounted, watch } from 'vue';
+import { onMounted, watch,type Ref, ref } from 'vue';
 import { EventType } from '../../scripts/enums';
 import { type PopUpText } from '../../scripts/interfaces';
-import { PLAYER_COLOR } from '../../scripts/consts';
 
 const props = defineProps({
   isShowing: Boolean,
@@ -11,7 +10,7 @@ const props = defineProps({
   popUpText: Object as () => PopUpText
 })
 let popUpModal: Modal = {} as Modal
-
+const modalRef = ref()
 
 watch(() => props.isShowing, (value) => {
   if (value) {
@@ -30,12 +29,12 @@ function emitEvent(eventType: EventType, value: boolean) {
 }
 
 onMounted(() => {
-  popUpModal = new Modal(document.getElementById('popUp')!)
+  popUpModal = new Modal(modalRef.value)
 })
 </script>
 
 <template>
-  <div id="popUp" class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="popUpModalTitle" aria-hidden="true">
+  <div ref="modalRef" class="modal fade" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="popUpModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content border border-success border-5 bg-dark" style="--bs-bg-opacity: .90;">
             <div class="modal-header border-bottom border-success">

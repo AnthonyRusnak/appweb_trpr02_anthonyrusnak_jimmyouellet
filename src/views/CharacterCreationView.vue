@@ -16,17 +16,10 @@ const router = useRouter()
 const titles: Ref<Title[]> = ref([] as Title[])
 const isLoading: Ref<boolean> = ref(false)
 const playerName: Ref<string> = ref('')
-const playerTitleId: Ref<number> = ref(0)
-
-function updateName(): void {
-  playerName.value = (document.getElementById('nameField') as HTMLInputElement).value;
-}
-function updateTitle(): void {
-  playerTitleId.value = Number((document.getElementById('titleField') as HTMLSelectElement).value);
-}
+const playerTitleId: Ref<string> = ref("0")
 
 function isFormInvalid(): boolean {
-  return isStringEmpty(playerName.value) || playerTitleId.value === 0 || playerName.value.length > PLAYER_NAME_MAX_LENGTH
+  return isStringEmpty(playerName.value) || playerTitleId.value === "0" || playerName.value.length > PLAYER_NAME_MAX_LENGTH
 }
 
 function submitForm(): void {
@@ -62,12 +55,12 @@ onMounted(async () => {
         <div class="p-2 border border-success rounded border-4 bg-dark fs-5" style="--bs-bg-opacity: .75;">
         <div class="mb-2">
           <label for="nameField" class="form-label outlined">Votre Nom</label>
-          <input type="text" class="form-control bg-dark border-success border-4 text-white" v-on:change="updateName()" id="nameField" required>
+          <input type="text" class="form-control bg-dark border-success border-4 text-white" v-model="playerName" id="nameField" required>
         </div>
         <div class="mb-2">
           <label for="titleField" class="form-label outlined">Votre Titre</label>
-          <select class="form-select bg-dark text-white border-success border-4" v-on:change="updateTitle()" id="titleField" required>
-            <option value="" disabled selected>Choisissez un titre</option>
+          <select class="form-select bg-dark text-white border-success border-4" v-model="playerTitleId" id="titleField" required>
+            <option value="0" disabled selected>Choisissez un titre</option>
             <option v-for="title in titles" :value="title.id">{{ title.name }}</option>
           </select>
         </div>

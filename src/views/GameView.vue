@@ -15,7 +15,6 @@ import { ActionType, EventType } from '../scripts/enums'
 import { DEFAULT_PLAYER_EXPERIENCE, DEFAULT_PLAYER_HEALTH, DEFAULT_PLAYER_LIFE_FORCE, DEFAULT_PLAYER_STRENGTH, ENEMY_COLOR, ENEMY_MINION_KILL_CHANCE, GAME_COLOR, GAME_DELAY, PLAYER_BLOCK_DAMAGE_DIVIDER, PLAYER_COLOR, PLAYER_HEAL_AMOUNT, PLAYER_HEAL_COST_PER_AMOUNT, PLAYER_SUMMON_COST, UNDEAD_COLOR, POP_UP_FLEE, POP_UP_LOSS, POP_UP_FIGHT_OVER, POP_UP_PAGE_EXIT, GAME_FIGHT_AMOUNT, POP_UP_WIN } from '@/scripts/consts'
 import { handleAttack, handleHealthAjustment, isCharacterDead, delay } from '../scripts/utils/gameUtils'
 import PopUp from '../components/game/PopUp.vue'
-import { onBeforeRouteLeave } from 'vue-router'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -29,7 +28,7 @@ const enemies: Ref<Character[]> = ref([])
 const player: Ref<Character> = ref({} as Character)
 
 const playerHealth: Ref<number> = ref(DEFAULT_PLAYER_HEALTH)
-let playerIsBlocking: boolean = false
+const playerIsBlocking: Ref<boolean> = ref(false)
 let playerIsFleeing: boolean = false
 const playerMinions: Ref<Undead[]> = ref([])
 const playerMinionCount: Ref<number> = computed(() => playerMinions.value.length)
@@ -81,7 +80,7 @@ async function act(action: ActionType): Promise<void> {
 
 //PLAYER ACTIONS SECTION
 function playerAct(action: ActionType): void {
-  playerIsBlocking = false
+  playerIsBlocking.value = false
   playerIsFleeing = false
   switch (action) {
     case ActionType.ATTACK:
@@ -115,7 +114,7 @@ function attack(): void {
   }
 }
 function defend(): void {
-  playerIsBlocking = true
+  playerIsBlocking.value = true
   gameLog.value.push([`Vous formez un voile nécrotique autour de vous.` , PLAYER_COLOR])
 }
 function heal(): void{
@@ -277,7 +276,7 @@ function popUpAct(condition: boolean): void {
   popUpButtonAction.value(condition)
 }
 
-router.beforeEach((to) => {
+router?.beforeEach((to) => {
   if (!isPopUpShowing.value){
     setPopUp(EventType.QUIT, POP_UP_PAGE_EXIT, (condition: boolean) => {
       if (condition) {
@@ -338,7 +337,7 @@ onMounted(async () => {
           <EnemyUI :enemy="currentEnemy" :enemyCurrentHealth="currentEnemyHealth"/>
         </div>
       </div>
-      <ActionPanel :isPlaying="isTurnPlaying" :playerHealth="playerHealth" :playerLifeForce="player.lifeForce" @playerAct="act" />
+      <ActionPanel :isPlaying="isTurnPlaying" :playerHealth="playerHealth" :playerLifeForce="(player?.lifeForce??0)" @playerAct="act" />
     </div>
   </template>
   <Loading :active="isLoading" />

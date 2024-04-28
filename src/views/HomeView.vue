@@ -18,7 +18,7 @@ import { HOME_MAIN_TEXT } from '../scripts/consts';
         </p>
       </div>
 
-      <router-link to="/character">
+      <router-link :to="{ name: 'CharacterCreation' }">
         <button class="btn btn-dark btn-lg border border-success border-4">
           Entrer
         </button>

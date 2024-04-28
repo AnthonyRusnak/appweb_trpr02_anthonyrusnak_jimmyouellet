@@ -16,12 +16,9 @@ export function isCharacterDead(health: number): boolean {
 }
 
 export function handleHealthAjustment(health: Ref<number>): void {
-    if (health.value < DEATH_TRESHOLD) {
-        health.value = DEATH_TRESHOLD;
-    }
+    if (health.value < DEATH_TRESHOLD) health.value = DEATH_TRESHOLD;
 }
 
 export async function delay(ms: number): Promise<void> {
-    return new Promise(
-        (resolve) => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }
