@@ -67,7 +67,7 @@ export const ENEMY_MINION_KILL_CHANCE = 0.2;
 
 //GAME GENERAL
 export const GAME_DELAY = 500;
-export const GAME_FIGHT_AMOUNT = 5;
+export const GAME_FIGHT_AMOUNT = 1;
 
 export const ATTACK_DAMAGE_RANGE = 50;
 export const DEATH_TRESHOLD = 0;

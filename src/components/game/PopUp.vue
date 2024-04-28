@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Modal } from 'bootstrap';
-import { onMounted, watch,type Ref, ref } from 'vue';
+import { onMounted, watch, ref } from 'vue';
 import { EventType } from '../../scripts/enums';
 import { type PopUpText } from '../../scripts/interfaces';
 

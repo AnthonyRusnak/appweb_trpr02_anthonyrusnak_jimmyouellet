@@ -45,8 +45,49 @@ Les différentes actions que le joueur peut faire sont identifiées dans une én
 
 J'aime beaucoup comment la fonction `playerAct()` gère les actions du joueur. L'énumération est utilisée pour identifier l'action que le joueur a sélectionnée, ce qui fait en sorte qu'on se retrouve assez bien dans le code.
 
+```
+function playerAct(action: ActionType): void {
+  playerIsBlocking.value = false
+  playerIsFleeing = false
+  switch (action) {
+    case ActionType.ATTACK:
+      attack()
+      break
+    case ActionType.DEFEND:
+      defend()
+      break
+    case ActionType.HEAL:
+      heal()
+      break
+    case ActionType.SUMMON:
+      summon()
+      break
+    case ActionType.FLEE:
+      flee()
+      break
+    default:
+      break
+  }
+}
+```
+
 La présence d'un `gameLog` est non seulement un élément fort pratique pour que le joueur arrive mieux à suivre le déroulement du jeu, elle aide aussi à déboguer plus facilement plutôt que de faire des `console.log()`.
 
 La logique pour calculer les dégâts du joueur, des morts-vivants et des ennemis est la même partout, donc la présence de la fonction `handleAttack()` fait beaucoup de sens. Cependant, je pense que le nom de la fonction `handleAttack()` pourrait être un peu plus précis. Par exemple, elle pourrait s'appeler `handleDamage()` à la place, puisqu'elle ne fait que calculer les dégâts.
 
+## Utilisation de Vue.js
 
+Les composants PopUp.vue et la vue `GameView.vue` ont été modifiés pour ne plus utiliser des `getElementById()`, mais des *ref* à la place, ce qui fait en sorte que les composants sont plus propres et plus facilement testables. Bon travail!
+
+## Commentaire dans GameView
+
+Des commentaires ont été ajoutés dans la vue `GameView.vue` pour séparer le code en différentes sections, ce qui fait en sorte qu'on se repère mieux dans le code. Il y a notamment les sections :
+
+* `//PLAYER ACTIONS SECTION`
+* `//ENEMY ACTIONS SECTION`
+* `//UNDEAD ACTIONS SECTION`
+* `//GAME SECTION`
+
+## Les tests
+
+Les tests de `GameLogger.vue`, `HomeView.vue`, `CharacterCreationView.vue`, `ScoreboardView.vue` et de `GameLogger` sont bien faits. Ils testent bien si l'affichage est bon et si certaines fonctionnalités, comme les changements de page ou la désactivation de certains éléments, fonctionnent comme prévu.  

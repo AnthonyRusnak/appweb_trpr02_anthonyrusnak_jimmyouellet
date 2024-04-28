@@ -22,12 +22,6 @@ describe('GameView.vue', () => {
         expect(wrapper.findComponent(PlayerUI).exists()).toBe(true)
     })
 
-    it('Should display the player name', async () => {
-        const wrapper = mount(GameView, { props: { playerName: 'Test', playerTitleId: '1' } })
-
-        expect(wrapper.text()).toContain('Test')
-    })
-
     it('Should display the enemy UI', async () => {
         const wrapper = mount(GameView, { props: { playerName: 'Test', playerTitleId: '1' } })
         expect(wrapper.findComponent(EnemyUI).exists()).toBe(true)

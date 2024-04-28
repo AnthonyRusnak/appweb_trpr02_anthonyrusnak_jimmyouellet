@@ -24,6 +24,21 @@
       "id": 5,
       "name": "Necro",
       "score": 1807
+    },
+    {
+      "id": 6,
+      "name": "Bozantho",
+      "score": 1104
+    },
+    {
+      "id": 7,
+      "name": "Death Bringer",
+      "score": 100
+    },
+    {
+      "id": 8,
+      "name": "Death Bringer",
+      "score": 175
     }
   ],
   "undeads": [
@@ -167,7 +182,7 @@
     },
     {
       "id": 26,
-      "name": "Revenant sans coeur" 
+      "name": "Revenant sans coeur"
     },
     {
       "id": 27,
@@ -183,7 +198,7 @@
     },
     {
       "id": 30,
-      "name": "Mort-vivant supérieur" 
+      "name": "Mort-vivant supérieur"
     },
     {
       "id": 31,

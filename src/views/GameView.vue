@@ -163,8 +163,9 @@ function enemyAttack(): void {
   let damage = handleAttack(currentEnemy.value.experience, currentEnemy.value.strength)
   if (damage === 0) {
     gameLog.value.push([`${currentEnemy.value.name} rate son attaque.`, ENEMY_COLOR])
-  } else {
-    if (playerIsBlocking){
+  } 
+  else {
+    if (playerIsBlocking.value){
       damage = Math.floor(damage / PLAYER_BLOCK_DAMAGE_DIVIDER)
     }
     playerHealth.value -= damage
@@ -249,6 +250,7 @@ async function winGame(saveScore: boolean): Promise<void> {
     let rankId: number = await gameService.getNextRankingId()
     await gameService.addRanking({ id: rankId , name: player.value.name, score: player.value.lifeForce })
     isLoading.value = false
+    allowLeave.value = true
     router.push({ name: 'Scores' })
   } else {
     router.push({ name: 'Home' })
@@ -277,7 +279,7 @@ function popUpAct(condition: boolean): void {
 }
 
 router?.beforeEach((to) => {
-  if (!isPopUpShowing.value){
+  if (!allowLeave.value){
     setPopUp(EventType.QUIT, POP_UP_PAGE_EXIT, (condition: boolean) => {
       if (condition) {
         allowLeave.value = true

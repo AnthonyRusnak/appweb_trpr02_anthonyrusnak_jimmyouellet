@@ -43,3 +43,37 @@ Le code de `EnemyUI` est très similaire au code de `PlayerUI`. Le code est bien
 
 Dans les stats des ennemis, il ne fallait pas afficher leur nombre de serviteurs puisqu'ils n'en ont aucun. Pour ce faire, la div contenant les serviteurs est cachée, mais conserve sa présence, ce qui conserve un affichage similaire aux stats du joueur. Cela est très bien fait à l'exception que dans le v-bind qui ajoute la classe `hidden`, il vérifie que le minionCount est undefined. Il vaudrait peut-être mieux envoyer une valeur fictive comme (-1) plutôt que de ne pas passer de valeur.
 
+## PopUp
+
+### Modal
+
+Le fait de créer un composant Popup qui est complètement réutilisable est excellent, car cela permet d'avoir qu'un seul composant popup dans la vue du jeu qui reçoit tout ce dont il a besoin. De cette manière, le code est ouvert à l'expansion, car tout événement, quel qu'il soit, peut utiliser le pop-up.
+
+Cependant, il y a un problème. Pour interagir avec le modal, la variable `popUpModal` utilise un `getElementById`, ce qui n'est pas une bonne pratique en Vue. Il vaut mieux connecter directement une référence (ref) à l'élément HTML du modal, puis connecter cette référence à `popUpModal`.
+
+### Interface
+
+Avoir l'interfaces `PopUpText` est une excellent idée puisque cela diminue les valeurs passer dans la composante `PopUp`, d'ailleur, si on regarde l'interface en soit:
+```
+export interface PopUpText {
+    title: string;
+    description: string;
+    buttonFalseText: string;
+    buttonTrueText: string;
+}
+```
+On voit ici facilement ce dont le popup à besoin (soit un titre, une description et deux bouton dont un retourne false et l'autre true).
+
+### EventType
+
+L'enum `EventType` est inutile puisque le popup n'a pas besoin de savoir quel événement a eu lieu, il serait préférable de le retirer.
+
+## Tests
+
+### Générale
+
+Les tests vérifient en général tout ce qui est vraiment nécessaire à tester (rendering, événement, modification) bien que dans les tests du `Popup` il aurait pu être intéressant de vérifier que le popup est caché par défaut. Sinon, les tests sont compacts, simples et efficaces et font ce que l'on attendrait d'eux. Les noms sont significatifs et faciles à comprendre.
+
+### Bonus
+
+Tout ce qui était du bonus (invoquer des sbires, se défendre, etc.) n'a pas été testé par souci de temps. Il vaudrait tout de même mieux essayer de tester au moins minimalement ses ajouts pour s'assurer que tout fonctionne tel que désiré.
